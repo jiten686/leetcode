@@ -1,27 +1,41 @@
 	package code;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
 
 	public static void main(String[] args) {
 		int[] nums = {2,7,11,15};
 		int target = 9;
-		for(int i : twoSum(nums,target)) {
+		for(int i : twoSumOptimize(nums,target)) {
 			System.out.println(i);
 		}
 	}
 	
     public static int[] twoSum(int[] nums, int target) {
-        int[] output = new int[2];
         for(int i=0;i<nums.length;i++){
-            if((i+1<nums.length)&&(nums[i]+nums[i+1]==target)){
-                output[0]=i;
-                output[1]=i+1;
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]+nums[j]==target){
+                return new int[]{i,j};
+                }
             }
         }
 
-        return output;
+        return null;
+    }
+    
+    //2,7,11,15  // 9
+    
+    public static int[] twoSumOptimize(int[] nums, int target) {
+    	 Map<Integer, Integer> map = new HashMap<>();
+         for(int i=0; i<nums.length; i++){
+             if(map.containsKey(target - nums[i])){
+                 return new int[]{map.get(target - nums[i]),i};
+             }
+             map.put(nums[i],i);
+         }
+         return null;
     }
 
 }

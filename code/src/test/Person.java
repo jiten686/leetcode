@@ -17,5 +17,14 @@ public class Person {
 	public void show() {
 		System.out.println(" in person show : "+this.name);
 	}
+	
+	
+	public void add(double a, float b) {
+
+	}
+
+	public void add(float b, double a) {
+
+	}
 
 }

@@ -8,7 +8,7 @@ public class observerPattern {
 	public static void main(String[] args) {
 		NotificationMgr mgr = new NotificationMgr();
 		mgr.addObserver(new MessagerNotifier());
-		mgr.addObserver(new emailNotifier());
+		mgr.addObserver(new EmailNotifier());
 
 		mgr.notifyAll("Amount is credited");
 	}
@@ -34,7 +34,7 @@ class MessagerNotifier implements Notifier {
 
 }
 
-class emailNotifier implements Notifier {
+class EmailNotifier implements Notifier {
 
 	@Override
 	public void sendMessage(String msg) {
@@ -45,17 +45,17 @@ class emailNotifier implements Notifier {
 
 class NotificationMgr implements NotificationObeserver {
 
-	List<Notifier> obervers = new ArrayList<Notifier>();
+	List<Notifier> observers = new ArrayList<Notifier>();
 
 	@Override
 	public void addObserver(Notifier observer) {
-		obervers.add(observer);
+		observers.add(observer);
 
 	}
 
 	@Override
 	public void notifyAll(String msg) {
-		for (Notifier notifier : obervers) {
+		for (Notifier notifier : observers) {
 			notifier.sendMessage(msg);
 		}
 

@@ -14,9 +14,8 @@ public class BubbleSort {
 
 	// Move the largest number towards the end
 	public static void BubbleSortAsec(int[] arr) {
-		int element_Pos = arr.length - 1;
 
-		while (element_Pos > 0) {
+		for (int element_Pos = arr.length - 1; element_Pos > 0; element_Pos--) {
 			for (int i = 0; i < element_Pos; i++) {
 				if (arr[i] > arr[i + 1]) {
 					int temp = arr[i];
@@ -25,7 +24,6 @@ public class BubbleSort {
 				}
 			}
 
-			--element_Pos;
 		}
 	}
 

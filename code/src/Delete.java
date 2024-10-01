@@ -1,14 +1,23 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class delete {
+public class Delete extends Thread{
+	@Override
+	public void run() {
+		System.out.println("By using Thread class");
+	}
 
 	public static void main(String[] args) throws InterruptedException {
 
-		System.out.println(lengthOfLongestSubstring("abcabcbb"));
+//		System.out.println(lengthOfLongestSubstring("abcabcbb"));
 		
-		Object obj = new Object();
-		obj.wait();
+		Delete d1 = new Delete();
+		d1.start();
+		
+		
+		Thread t1 = new Thread(new Test());
+		t1.start();
+		
 	}
 
 	public static int lengthOfLongestSubstring(String s) {
@@ -36,4 +45,15 @@ public class delete {
         return maxLen;
     }
 
+}
+
+
+class Test implements Runnable{
+
+	@Override
+	public void run() {
+	System.out.println("By using runnable interface");
+		
+	}
+	
 }
